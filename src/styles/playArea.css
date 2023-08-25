@@ -1,0 +1,21 @@
+.play_area {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: aqua;
+  width: 1000px;
+  height: 650px;
+}
+
+.player{
+  width: 45%;
+  height: 90%;
+  background-color: brown;
+  border-radius: 20px;
+}
+
+.attack {
+  width: 100px;
+  height: 35px;
+  border-radius: 9px;
+}
