@@ -12,6 +12,7 @@
   height: 90%;
   background-color: brown;
   border-radius: 20px;
+  transition: 0.2s;
 }
 
 .attack {

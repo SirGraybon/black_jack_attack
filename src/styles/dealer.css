@@ -1,0 +1,25 @@
+.dealerComponent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: aqua;
+  width: 1000px;
+  height: 150px;
+  margin-top: 10px;
+}
+
+.dealer {
+  background-color: brown;
+  width: 300px;
+  height: 125px;
+}
+.deck {
+  background-color: brown;
+  width: 300px;
+  height: 125px;
+}
+.burnPile {
+  background-color: brown;
+  width: 300px;
+  height: 125px;
+}
