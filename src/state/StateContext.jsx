@@ -5,14 +5,23 @@ const StateContext = createContext(defaultState);
 export const StateProvider = ({ children }) => {
 const [state, dispatch] = useReducer(reducer, defaultState);
 
-const takeDamage = function(){
-  console.log("done")
-  dispatch({type: "TAKE_DAMAGE", payload: true})
+const takeDamage = function(id){
+  dispatch({type: "TAKE_DAMAGE", payload: id})
+  console.log(state.damage)
   setTimeout(() => {
     console.log(" and done")
-    dispatch({type: "TAKE_DAMAGE", payload: false})
+    console.log(state.damage)
+    dispatch({type: "TAKE_DAMAGE", payload: 0})
     
   }, 500);
+}
+
+const drawCard = function(){
+  const i = Math.floor(Math.random() * state.deck.length)
+  console.log(i)
+  const drawnCard = state.deck[i]
+  
+
 }
 
 
@@ -21,8 +30,11 @@ const takeDamage = function(){
   ////////////////////EXPORT FOR FUNCTIONs & STATE////////////////////////////////////////////////////////////
   const value = {
     takeDamage,
+    drawCard,
     damage: state.damage,
-    turn: state.turn
+    turn: state.turn,
+    players: state.players,
+    deck: state.deck
   };
 
   return (
