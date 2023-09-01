@@ -6,24 +6,24 @@ export const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   const attack = function (id, damage) {
+    console.log(damage)
     dispatch({ type: "TAKE_DAMAGE", id, damage });
     dispatch({ type: "ANIMATE_DAMAGE", payload: id });
-    console.log(state.damage);
+
     setTimeout(() => {
-      console.log(" and done");
-      console.log(state.damage);
+
       dispatch({ type: "ANIMATE_DAMAGE", payload: 0 });
     }, 100);
     setTimeout(() => {
-      console.log(" and done");
-      console.log(state.damage);
+
       dispatch({ type: "ANIMATE_DAMAGE", payload: id });
     }, 200);
     setTimeout(() => {
-      console.log(" and done");
-      console.log(state.damage);
+
       dispatch({ type: "ANIMATE_DAMAGE", payload: 0 });
     }, 300);
+
+    dispatch({type: "NEXT_TURN"})
   };
 
   const drawCard = function () {
@@ -34,16 +34,19 @@ export const StateProvider = ({ children }) => {
       (player) => state.turn === player.playerId
     );
     const drawnCard = updatedDeck[deckIndex];
-    updatedPlayers[playerIndex].hand += drawnCard;
+  
     updatedDeck.splice(deckIndex, 1);
-    const handValue = updatedPlayers[playerIndex].hand;
-    if (handValue > 21) {
-      attack(state.turn, handValue);
-      updatedPlayers[playerIndex].hand = 0;
+    let newHand = state.currentHand + drawnCard
+    console.log(newHand)
+    
+    
+    if (newHand > 21) {
+      attack(state.turn, newHand);
+      newHand = 0
       
     }
 
-    dispatch({ type: "HIT_ME", updatedDeck, updatedPlayers });
+    dispatch({ type: "HIT_ME", updatedDeck, newHand});
   };
 
   ////////////////////EXPORT FOR FUNCTIONs & STATE////////////////////////////////////////////////////////////
@@ -54,6 +57,7 @@ export const StateProvider = ({ children }) => {
     turn: state.turn,
     players: state.players,
     deck: state.deck,
+    currentHand: state.currentHand
   };
 
   return (

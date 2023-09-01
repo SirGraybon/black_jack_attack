@@ -14,6 +14,7 @@ export const defaultState = {
   damage: 0,
   players: players,
   deck: cards,
+  currentHand: 0,
 };
 ////////////////////REDUCER SWITCH CASEs////////////////////////////////////////////////////////////
 export const reducer = function (state, action) {
@@ -27,16 +28,17 @@ export const reducer = function (state, action) {
   }
   switch (action.type) {
     case "TAKE_DAMAGE": {
-      console.log(action.id, action.damage)
       const updatedPlayers = [...state.players];
       const playerIndex = updatedPlayers.findIndex(
         (player) => action.id === player.playerId
       );
-      updatedPlayers[playerIndex].health -= action.damage;
+      const newHealth = updatedPlayers[playerIndex].health -= action.damage;
+      updatedPlayers[playerIndex].health = newHealth
 
       return {
         ...state,
         players: updatedPlayers,
+        currentHand: 0,
       };
     }
   }
@@ -44,8 +46,17 @@ export const reducer = function (state, action) {
     case "HIT_ME": {
       return {
         ...state,
-        players: action.updatedPlayers,
         deck: action.updatedDeck,
+        currentHand: action.newHand,
+      };
+    }
+  }
+  switch (action.type) {
+    case "NEXT_TURN": {
+      const newTurn = state.turn === 1 ? 2 : 1
+      return {
+        ...state,
+        turn: newTurn
       };
     }
   }

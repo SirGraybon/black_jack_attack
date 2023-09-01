@@ -5,7 +5,7 @@ import shareState from "../state/StateContext";
 
 const PlayArea = function () {
   ///////////////STATE//////////////////////////////
-  const { turn, damage, attack, players } = shareState();
+  const { turn, damage, attack, players, currentHand } = shareState();
   // const [turn, setTurn] = useState(1);
   // const [damage, setDamage] = useState(false)
   //////////////FUNCTIONs//////////////////////////
@@ -36,10 +36,10 @@ const PlayArea = function () {
             <div className="hand">
               <button
                 className="attack"
-                onClick={() => attack(player.playerId === 2 ? 1 : 2, player.hand)}
+                onClick={() => attack(player.playerId === 2 ? 1 : 2, currentHand)}
               ></button>
-              <p>Hand: {player.hand}</p>
               <p>Health: {player.health}</p>
+              <p> {turn === player.playerId && `Hand: ${currentHand}`}</p>
             </div>
           </motion.div>
         );
