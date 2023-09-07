@@ -15,10 +15,11 @@
   text-align: center;
   width: 500px;
   height: 700px;
-  background-color: brown;
+  background-color: rgb(252, 252, 252);
   border-radius: 20px;
   transition: 0.1s;
   overflow: hidden;
+  background-repeat: no-repeat;
 }
 
 .attack {

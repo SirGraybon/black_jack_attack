@@ -6,11 +6,12 @@ import Card from "./Card.jsx";
 
 const PlayArea = function () {
   ///////////////STATE//////////////////////////////
-  const { turn, damage, attack, players, currentHand, currentHandTotal } = shareState();
+  const { turn, damage, attack, players, currentHand, currentHandTotal } =
+    shareState();
   // const [turn, setTurn] = useState(1);
   // const [damage, setDamage] = useState(false)
-  //////////////FUNCTIONs//////////////////////////
-
+  //////////////VARIABLEs//////////////////////////
+  const inPlayHand = [...currentHand];
   /////////////ANIMATIONs//////////////////////////
   const animation = {
     initial: {},
@@ -23,42 +24,65 @@ const PlayArea = function () {
   return (
     <div className="play_area">
       {players.map((player, index) => {
-        return (
-          <motion.div
-            className="player"
-            key={player.playerId}
-            variants={animation}
-            initial="initial"
-            animate={damage === player.playerId ? "animate" : "initial"}
-          >
-            <div className="hand">
-              <p>Health: {player.health}</p>
-              <p> {turn === player.playerId && `Total: ${currentHandTotal}`}</p>
-              {turn === player.playerId && (
-                <button
-                  className="attack"
-                  onClick={() =>
-                    attack(player.playerId === 2 ? 1 : 2, currentHandTotal)
-                  }
-                >
+        if (turn === player.playerId) {
+          return (
+            <motion.div
+              className="player"
+              key={player.playerId}
+              variants={animation}
+              initial="initial"
+              animate={damage === player.playerId ? "animate" : "initial"}
+              style={{ backgroundImage: damage === player.playerId ? `url(${player.hurt})`: `url(${player.avatar})` }}
+
+            >
+              <div className="hand">
+                <p>Health: {player.health}</p>
+                <p>
                   {" "}
-                  Attack!
-                </button>
-              )}
-            </div>
-            <div className="handCards">
-              {turn === player.playerId &&
-                currentHand.map((card) => {
-                  return (
-                    <div
-                      className="card"
-                      style={{ backgroundImage: `url(${card.image})` }}
-                    ></div>
-                  );
-                })}
-            </div>
-          </motion.div>
-        );
+                  {turn === player.playerId && `Total: ${currentHandTotal}`}
+                </p>
+                {turn === player.playerId && (
+                  <button
+                    className="attack"
+                    onClick={() =>
+                      attack(player.playerId === 2 ? 1 : 2, currentHandTotal)
+                    }
+                  >
+                    {" "}
+                    Attack!
+                  </button>
+                )}
+              </div>
+              <div className="handCards">
+                {turn === player.playerId &&
+                  inPlayHand.map((card) => {
+                    return (
+                      <div
+                        className="card"
+                        style={{ backgroundImage: `url(${card.image})` }}
+                      ></div>
+                    );
+                  })}
+              </div>
+            </motion.div>
+          );
+        } else {
+          return (
+            <motion.div
+              className="player"
+              key={player.playerId}
+              variants={animation}
+              initial="initial"
+              animate={damage === player.playerId ? "animate" : "initial"}
+              style={{ backgroundImage: damage === player.playerId ? `url(${player.hurt})`: `url(${player.avatar})` }}
+            >
+              <div className="hand">
+                <p>Health: {player.health}</p>
+              </div>
+              <div className="handCards"></div>
+            </motion.div>
+          );
+        }
       })}
     </div>
   );

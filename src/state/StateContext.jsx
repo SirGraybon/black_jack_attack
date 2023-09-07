@@ -7,23 +7,29 @@ export const StateProvider = ({ children }) => {
 
   const attack = function (id, damage) {
     console.log(damage)
-    dispatch({ type: "TAKE_DAMAGE", id, damage });
+    if (damage === 21) {
+
+      dispatch({ type: "TAKE_DAMAGE", id, damage:50 });
+    } else {
+
+      dispatch({ type: "TAKE_DAMAGE", id, damage });
+    }
+
     dispatch({ type: "ANIMATE_DAMAGE", payload: id });
 
     setTimeout(() => {
 
       dispatch({ type: "ANIMATE_DAMAGE", payload: 0 });
-    }, 100);
-    setTimeout(() => {
-
-      dispatch({ type: "ANIMATE_DAMAGE", payload: id });
-    }, 200);
-    setTimeout(() => {
-
-      dispatch({ type: "ANIMATE_DAMAGE", payload: 0 });
     }, 300);
+  
 
-    dispatch({type: "NEXT_TURN"})
+
+    setTimeout(() => {
+
+      dispatch({type: "NEXT_TURN"});
+    }, 550);
+
+    
   };
 
   const drawCard = function () {

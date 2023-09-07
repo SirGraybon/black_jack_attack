@@ -1,12 +1,55 @@
 /////////////////IMPORTs///////////////////////////////////////////////////////////////////////////
 import oneHeart from "../assets/cards/1Heart.png";
+import king from "../assets/cards/King.png"
+import kingDamage from "../assets/cards/KingDamage.png"
+import Queen from "../assets/cards/Queen.png"
+import QueenDamage from "../assets/cards/QueenDamage.png"
 
 const players = [
-  { playerId: 1, hand: 0, health: 175 },
-  { playerId: 2, hand: 0, health: 175 },
+  { playerId: 1, hand: 0, health: 175, avatar: Queen, hurt: QueenDamage },
+  { playerId: 2, hand: 0, health: 175, avatar: king, hurt: kingDamage },
 ];
 ////
 const cards = [
+  { value: 1, image: oneHeart },
+  { value: 2, image: oneHeart },
+  { value: 3, image: oneHeart },
+  { value: 4, image: oneHeart },
+  { value: 5, image: oneHeart },
+  { value: 6, image: oneHeart },
+  { value: 7, image: oneHeart },
+  { value: 8, image: oneHeart },
+  { value: 9, image: oneHeart },
+  { value: 10, image: oneHeart },
+  { value: 11, image: oneHeart },
+  { value: 12, image: oneHeart },
+  { value: 13, image: oneHeart },
+  { value: 1, image: oneHeart },
+  { value: 2, image: oneHeart },
+  { value: 3, image: oneHeart },
+  { value: 4, image: oneHeart },
+  { value: 5, image: oneHeart },
+  { value: 6, image: oneHeart },
+  { value: 7, image: oneHeart },
+  { value: 8, image: oneHeart },
+  { value: 9, image: oneHeart },
+  { value: 10, image: oneHeart },
+  { value: 11, image: oneHeart },
+  { value: 12, image: oneHeart },
+  { value: 13, image: oneHeart },
+  { value: 1, image: oneHeart },
+  { value: 2, image: oneHeart },
+  { value: 3, image: oneHeart },
+  { value: 4, image: oneHeart },
+  { value: 5, image: oneHeart },
+  { value: 6, image: oneHeart },
+  { value: 7, image: oneHeart },
+  { value: 8, image: oneHeart },
+  { value: 9, image: oneHeart },
+  { value: 10, image: oneHeart },
+  { value: 11, image: oneHeart },
+  { value: 12, image: oneHeart },
+  { value: 13, image: oneHeart },
   { value: 1, image: oneHeart },
   { value: 2, image: oneHeart },
   { value: 3, image: oneHeart },
