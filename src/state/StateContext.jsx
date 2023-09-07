@@ -29,24 +29,25 @@ export const StateProvider = ({ children }) => {
   const drawCard = function () {
     const deckIndex = Math.floor(Math.random() * state.deck.length);
     const updatedDeck = state.deck;
-    const updatedPlayers = state.players;
-    const playerIndex = updatedPlayers.findIndex(
-      (player) => state.turn === player.playerId
-    );
+    const newHand = state.currentHand
+    let newTotal = state.currentHandTotal       
     const drawnCard = updatedDeck[deckIndex];
+    const drawnCardValue = updatedDeck[deckIndex].value;
+    newTotal += drawnCardValue
   
     updatedDeck.splice(deckIndex, 1);
-    let newHand = state.currentHand + drawnCard
-    console.log(newHand)
+    newHand.push(drawnCard)
+    
+   
     
     
-    if (newHand > 21) {
-      attack(state.turn, newHand);
-      newHand = 0
+    if (newTotal > 21) {
+      attack(state.turn, newTotal);
+      newTotal = 0
       
     }
 
-    dispatch({ type: "HIT_ME", updatedDeck, newHand});
+    dispatch({ type: "HIT_ME", updatedDeck, newHand, newTotal});
   };
 
   ////////////////////EXPORT FOR FUNCTIONs & STATE////////////////////////////////////////////////////////////
@@ -57,7 +58,9 @@ export const StateProvider = ({ children }) => {
     turn: state.turn,
     players: state.players,
     deck: state.deck,
-    currentHand: state.currentHand
+    currentHand: state.currentHand,
+    burnPile: state.burnPile,
+    currentHandTotal: state.currentHandTotal
   };
 
   return (

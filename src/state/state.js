@@ -1,12 +1,25 @@
+/////////////////IMPORTs///////////////////////////////////////////////////////////////////////////
+import oneHeart from "../assets/cards/1Heart.png";
+
 const players = [
-  { playerId: 1, hand: 0, health: 200 },
-  { playerId: 2, hand: 0, health: 200 },
+  { playerId: 1, hand: 0, health: 175 },
+  { playerId: 2, hand: 0, health: 175 },
 ];
 ////
 const cards = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-  12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-  10, 11, 12, 13,
+  { value: 1, image: oneHeart },
+  { value: 2, image: oneHeart },
+  { value: 3, image: oneHeart },
+  { value: 4, image: oneHeart },
+  { value: 5, image: oneHeart },
+  { value: 6, image: oneHeart },
+  { value: 7, image: oneHeart },
+  { value: 8, image: oneHeart },
+  { value: 9, image: oneHeart },
+  { value: 10, image: oneHeart },
+  { value: 11, image: oneHeart },
+  { value: 12, image: oneHeart },
+  { value: 13, image: oneHeart },
 ];
 
 export const defaultState = {
@@ -14,7 +27,9 @@ export const defaultState = {
   damage: 0,
   players: players,
   deck: cards,
-  currentHand: 0,
+  currentHand: [],
+  currentHandTotal: 0,
+  burnPile: [],
 };
 ////////////////////REDUCER SWITCH CASEs////////////////////////////////////////////////////////////
 export const reducer = function (state, action) {
@@ -32,13 +47,13 @@ export const reducer = function (state, action) {
       const playerIndex = updatedPlayers.findIndex(
         (player) => action.id === player.playerId
       );
-      const newHealth = updatedPlayers[playerIndex].health -= action.damage;
-      updatedPlayers[playerIndex].health = newHealth
+      const newHealth = (updatedPlayers[playerIndex].health -= action.damage);
+      updatedPlayers[playerIndex].health = newHealth;
 
       return {
         ...state,
         players: updatedPlayers,
-        currentHand: 0,
+   
       };
     }
   }
@@ -48,15 +63,21 @@ export const reducer = function (state, action) {
         ...state,
         deck: action.updatedDeck,
         currentHand: action.newHand,
+        currentHandTotal: action.newTotal
+        
       };
     }
   }
   switch (action.type) {
     case "NEXT_TURN": {
-      const newTurn = state.turn === 1 ? 2 : 1
+      console.log("turn: " + state.turn);
+      const newTurn = state.turn === 1 ? 2 : 1;
+      console.log("newTurn: " + newTurn);
       return {
         ...state,
-        turn: newTurn
+        turn: newTurn,
+        currentHand: [],
+        currentHandTotal: 0
       };
     }
   }
