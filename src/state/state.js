@@ -1,5 +1,18 @@
 /////////////////IMPORTs///////////////////////////////////////////////////////////////////////////
-import oneHeart from "../assets/cards/1Heart.png";
+import AHeart from "../assets/cards/AHeart.png";
+import twoHeart from "../assets/cards/2Heart.png";
+import threeHeart from "../assets/cards/3Heart.png";
+import fourHeart from "../assets/cards/4Heart.png";
+import fiveHeart from "../assets/cards/5Heart.png";
+import sixHeart from "../assets/cards/6Heart.png";
+import sevenHeart from "../assets/cards/7Heart.png";
+import eightHeart from "../assets/cards/8Heart.png";
+import nineHeart from "../assets/cards/9Heart.png";
+import tenHeart from "../assets/cards/10Heart.png";
+import JHeart from "../assets/cards/JHeart.png";
+import QHeart from "../assets/cards/QHeart.png";
+import KHeart from "../assets/cards/KHeart.png";
+
 import king from "../assets/cards/King.png"
 import kingDamage from "../assets/cards/KingDamage.png"
 import Queen from "../assets/cards/Queen.png"
@@ -11,58 +24,58 @@ const players = [
 ];
 ////
 const cards = [
-  { value: 1, image: oneHeart },
-  { value: 2, image: oneHeart },
-  { value: 3, image: oneHeart },
-  { value: 4, image: oneHeart },
-  { value: 5, image: oneHeart },
-  { value: 6, image: oneHeart },
-  { value: 7, image: oneHeart },
-  { value: 8, image: oneHeart },
-  { value: 9, image: oneHeart },
-  { value: 10, image: oneHeart },
-  { value: 11, image: oneHeart },
-  { value: 12, image: oneHeart },
-  { value: 13, image: oneHeart },
-  { value: 1, image: oneHeart },
-  { value: 2, image: oneHeart },
-  { value: 3, image: oneHeart },
-  { value: 4, image: oneHeart },
-  { value: 5, image: oneHeart },
-  { value: 6, image: oneHeart },
-  { value: 7, image: oneHeart },
-  { value: 8, image: oneHeart },
-  { value: 9, image: oneHeart },
-  { value: 10, image: oneHeart },
-  { value: 11, image: oneHeart },
-  { value: 12, image: oneHeart },
-  { value: 13, image: oneHeart },
-  { value: 1, image: oneHeart },
-  { value: 2, image: oneHeart },
-  { value: 3, image: oneHeart },
-  { value: 4, image: oneHeart },
-  { value: 5, image: oneHeart },
-  { value: 6, image: oneHeart },
-  { value: 7, image: oneHeart },
-  { value: 8, image: oneHeart },
-  { value: 9, image: oneHeart },
-  { value: 10, image: oneHeart },
-  { value: 11, image: oneHeart },
-  { value: 12, image: oneHeart },
-  { value: 13, image: oneHeart },
-  { value: 1, image: oneHeart },
-  { value: 2, image: oneHeart },
-  { value: 3, image: oneHeart },
-  { value: 4, image: oneHeart },
-  { value: 5, image: oneHeart },
-  { value: 6, image: oneHeart },
-  { value: 7, image: oneHeart },
-  { value: 8, image: oneHeart },
-  { value: 9, image: oneHeart },
-  { value: 10, image: oneHeart },
-  { value: 11, image: oneHeart },
-  { value: 12, image: oneHeart },
-  { value: 13, image: oneHeart },
+  { value: 1, image: AHeart },
+  { value: 2, image: twoHeart },
+  { value: 3, image: threeHeart },
+  { value: 4, image: fourHeart },
+  { value: 5, image: fiveHeart },
+  { value: 6, image: sixHeart },
+  { value: 7, image: sevenHeart },
+  { value: 8, image: eightHeart },
+  { value: 9, image: nineHeart },
+  { value: 10, image: tenHeart },
+  { value: 11, image: JHeart },
+  { value: 12, image: QHeart },
+  { value: 13, image: KHeart },
+  { value: 1, image: AHeart },
+  { value: 2, image: twoHeart },
+  { value: 3, image: threeHeart },
+  { value: 4, image: fourHeart },
+  { value: 5, image: fiveHeart },
+  { value: 6, image: sixHeart },
+  { value: 7, image: sevenHeart },
+  { value: 8, image: eightHeart },
+  { value: 9, image: nineHeart },
+  { value: 10, image: tenHeart },
+  { value: 11, image: JHeart },
+  { value: 12, image: QHeart },
+  { value: 13, image: KHeart },
+  { value: 1, image: AHeart },
+  { value: 2, image: twoHeart },
+  { value: 3, image: threeHeart },
+  { value: 4, image: fourHeart },
+  { value: 5, image: fiveHeart },
+  { value: 6, image: sixHeart },
+  { value: 7, image: sevenHeart },
+  { value: 8, image: eightHeart },
+  { value: 9, image: nineHeart },
+  { value: 10, image: tenHeart },
+  { value: 11, image: JHeart },
+  { value: 12, image: QHeart },
+  { value: 13, image: KHeart },
+  { value: 1, image: AHeart },
+  { value: 2, image: twoHeart },
+  { value: 3, image: threeHeart },
+  { value: 4, image: fourHeart },
+  { value: 5, image: fiveHeart },
+  { value: 6, image: sixHeart },
+  { value: 7, image: sevenHeart },
+  { value: 8, image: eightHeart },
+  { value: 9, image: nineHeart },
+  { value: 10, image: tenHeart },
+  { value: 11, image: JHeart },
+  { value: 12, image: QHeart },
+  { value: 13, image: KHeart },
 ];
 
 export const defaultState = {

@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: aqua;
   width: 1100px;
   height: 150px;
   margin-top: 10px;
@@ -12,15 +11,18 @@
   background-color: brown;
   width: 300px;
   height: 125px;
+  border-radius: 10px;
 }
 .deck {
   background-color: brown;
   width: 300px;
   height: 125px;
   cursor: pointer;
+  border-radius: 10px;
 }
 .burnPile {
   background-color: brown;
   width: 300px;
   height: 125px;
+  border-radius: 10px;
 }

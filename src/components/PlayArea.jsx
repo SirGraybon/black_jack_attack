@@ -27,32 +27,19 @@ const PlayArea = function () {
         if (turn === player.playerId) {
           return (
             <motion.div
-              className="player"
+              className={`player${player.playerId}`}
               key={player.playerId}
               variants={animation}
               initial="initial"
               animate={damage === player.playerId ? "animate" : "initial"}
-              style={{ backgroundImage: damage === player.playerId ? `url(${player.hurt})`: `url(${player.avatar})` }}
-
+              style={{
+                backgroundImage:
+                  damage === player.playerId
+                    ? `url(${player.hurt})`
+                    : `url(${player.avatar})`,
+              }}
             >
-              <div className="hand">
-                <p>Health: {player.health}</p>
-                <p>
-                  {" "}
-                  {turn === player.playerId && `Total: ${currentHandTotal}`}
-                </p>
-                {turn === player.playerId && (
-                  <button
-                    className="attack"
-                    onClick={() =>
-                      attack(player.playerId === 2 ? 1 : 2, currentHandTotal)
-                    }
-                  >
-                    {" "}
-                    Attack!
-                  </button>
-                )}
-              </div>
+              <div className="health">{player.health}</div>
               <div className="handCards">
                 {turn === player.playerId &&
                   inPlayHand.map((card) => {
@@ -64,21 +51,39 @@ const PlayArea = function () {
                     );
                   })}
               </div>
+              <div>
+                <p>
+                  {turn === player.playerId && `Total: ${currentHandTotal}`}
+                </p>
+                {turn === player.playerId && (
+                  <button
+                    className="attack"
+                    onClick={() =>
+                      attack(player.playerId === 2 ? 1 : 2, currentHandTotal)
+                    }
+                  >
+                    Attack!
+                  </button>
+                )}
+              </div>
             </motion.div>
           );
         } else {
           return (
             <motion.div
-              className="player"
+              className={`player${player.playerId}`}
               key={player.playerId}
               variants={animation}
               initial="initial"
               animate={damage === player.playerId ? "animate" : "initial"}
-              style={{ backgroundImage: damage === player.playerId ? `url(${player.hurt})`: `url(${player.avatar})` }}
+              style={{
+                backgroundImage:
+                  damage === player.playerId
+                    ? `url(${player.hurt})`
+                    : `url(${player.avatar})`,
+              }}
             >
-              <div className="hand">
-                <p>Health: {player.health}</p>
-              </div>
+              <div className="health">{player.health}</div>
               <div className="handCards"></div>
             </motion.div>
           );
