@@ -33,16 +33,17 @@ export const StateProvider = ({ children }) => {
   };
 
   const drawCard = function () {
+    const topCard = {...state.topCard}
     const deckIndex = Math.floor(Math.random() * state.deck.length);
     const updatedDeck = state.deck;
     const newHand = state.currentHand
     let newTotal = state.currentHandTotal       
     const drawnCard = updatedDeck[deckIndex];
-    const drawnCardValue = updatedDeck[deckIndex].value;
-    newTotal += drawnCardValue
+    const cardValue = topCard.value;
+    newTotal += cardValue
   
     updatedDeck.splice(deckIndex, 1);
-    newHand.push(drawnCard)
+    newHand.push(topCard)
     
    
     
@@ -53,7 +54,7 @@ export const StateProvider = ({ children }) => {
       
     }
 
-    dispatch({ type: "HIT_ME", updatedDeck, newHand, newTotal});
+    dispatch({ type: "HIT_ME", updatedDeck, newHand, newTotal, drawnCard});
   };
 
   ////////////////////EXPORT FOR FUNCTIONs & STATE////////////////////////////////////////////////////////////
@@ -66,7 +67,8 @@ export const StateProvider = ({ children }) => {
     deck: state.deck,
     currentHand: state.currentHand,
     burnPile: state.burnPile,
-    currentHandTotal: state.currentHandTotal
+    currentHandTotal: state.currentHandTotal,
+    topCard: state.topCard
   };
 
   return (

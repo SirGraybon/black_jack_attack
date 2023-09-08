@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/playArea.css";
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import shareState from "../state/StateContext";
 import Card from "./Card.jsx";
 

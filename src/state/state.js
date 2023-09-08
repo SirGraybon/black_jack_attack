@@ -83,6 +83,7 @@ export const defaultState = {
   damage: 0,
   players: players,
   deck: cards,
+  topCard: { value: 1, image: AHeart },
   currentHand: [],
   currentHandTotal: 0,
   burnPile: [],
@@ -119,7 +120,8 @@ export const reducer = function (state, action) {
         ...state,
         deck: action.updatedDeck,
         currentHand: action.newHand,
-        currentHandTotal: action.newTotal
+        currentHandTotal: action.newTotal,
+        topCard: action.drawnCard
         
       };
     }
