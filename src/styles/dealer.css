@@ -14,6 +14,7 @@
   border-radius: 10px;
 }
 .deck {
+  display: flex;
   background-color: brown;
   width: 300px;
   height: 125px;
@@ -25,4 +26,8 @@
   width: 300px;
   height: 125px;
   border-radius: 10px;
+}
+
+.cardDeck {
+  object-fit: contain;
 }

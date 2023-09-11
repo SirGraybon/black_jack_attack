@@ -6,7 +6,7 @@ import Card from "./Card.jsx";
 
 const PlayArea = function () {
   ///////////////STATE//////////////////////////////
-  const { turn, damage, attack, players, currentHand, currentHandTotal } =
+  const { turn, damage, attack, players, currentHand, currentHandTotal, deck } =
     shareState();
   // const [turn, setTurn] = useState(1);
   // const [damage, setDamage] = useState(false)
@@ -19,6 +19,11 @@ const PlayArea = function () {
       scale: 0.7,
       backgroundColor: "#888888",
     },
+  };
+  const cardsAnimation = {
+    initial: { x: -100, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { y: -100, opacity: 0 },
   };
 
   return (
@@ -40,31 +45,40 @@ const PlayArea = function () {
               }}
             >
               <div className="health">{player.health}</div>
-              <div className="handCards">
-                {turn === player.playerId &&
-                  inPlayHand.map((card) => {
-                    return (
-                      <div
-                        className="card"
-                        style={{ backgroundImage: `url(${card.image})` }}
-                      ></div>
-                    );
-                  })}
-              </div>
-              <div>
-                <p>
-                  {turn === player.playerId && `Total: ${currentHandTotal}`}
-                </p>
-                {turn === player.playerId && (
-                  <button
-                    className="attack"
-                    onClick={() =>
-                      attack(player.playerId === 2 ? 1 : 2, currentHandTotal)
-                    }
-                  >
-                    Attack!
-                  </button>
-                )}
+              <div className="cardsArea">
+                <div className="handCards">
+                  {turn === player.playerId &&
+                    inPlayHand.map((card) => {
+                      return (
+                        <motion.div
+                          className="card"
+                          key={card.id}
+                          variants={cardsAnimation}
+                          initial="initial"
+                          animate="animate"
+                          exit="exit"
+                          style={{ backgroundImage: `url(${card.image})` }}
+                        ></motion.div>
+                      );
+                    })}
+                  <div>
+
+                    {turn === player.playerId && (
+                      <motion.div
+                        className="attack"
+                        whileHover={{scale: 1.2}}
+                        whileTap={{scale: 0.9}}
+                        onClick={ () => currentHandTotal > 0 &&
+                          attack(
+                            player.playerId === 2 ? 1 : 2,
+                            currentHandTotal
+                          )
+                        }
+                      >{currentHandTotal}</motion.div>
+                    )}
+                  </div>
+                </div>
+                <div className="handCards"></div>
               </div>
             </motion.div>
           );

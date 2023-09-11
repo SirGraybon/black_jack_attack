@@ -9,14 +9,18 @@ export const Dealer = function () {
   const animation = {
     initial: { x: -100, opacity: 0 },
     animate: { x: 0, opacity: 1 },
-    exit: { y: -100, opacity: 0 },
+    exit: { x: 100, opacity: 0 },
   };
   /////////////component return/////////////////
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" >
       <div className="dealerComponent">
         <div className="deck" onClick={() => drawCard()}>
+          <div className="card" style={{
+              backgroundImage: `url(${cardBack})`,
+              boxShadow: "-3px 3px 1px  #6f6f72" 
+            }} />
           <motion.div
             className="card"
             key={deck}
@@ -25,7 +29,7 @@ export const Dealer = function () {
             animate="animate"
             exit="exit"
             style={{
-              backgroundImage: `url(${cardBack})`,
+              backgroundImage: `url(${cardBack})`, zIndex: 2, position: "absolute", x: "+202"
             }}
           ></motion.div>
         </div>
