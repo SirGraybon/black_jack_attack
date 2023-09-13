@@ -6,8 +6,6 @@
   height: 750px;
 }
 
-
-
 .attack {
   display: flex;
   align-items: center;
@@ -20,10 +18,10 @@
   font-weight: bold;
   margin: 10px;
   cursor: pointer;
-  box-shadow: 2px 3px 3px   #2e2e2f9e
+  box-shadow: 2px 3px 3px #2e2e2f9e;
 }
 
-.health{
+.health {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,7 +37,7 @@
   border: solid;
   border-color: aqua;
 }
-.handCards{
+.handCards {
   display: flex;
   width: 100%;
   height: 150px;
@@ -47,7 +45,7 @@
 
   background-color: rgb(136, 133, 131);
 }
-.cardsArea{
+.cardsArea {
   display: flex;
   width: 100%;
   align-items: center;
@@ -55,21 +53,19 @@
   background-color: rgb(175, 92, 40);
 }
 
-
-
 .card {
   margin: 10px;
   position: relative;
   width: 75px;
   height: 105px;
-background-size: contain;  background-color: rgb(180, 198, 213);
+  background-size: contain;
+  background-color: rgb(180, 198, 213);
   border-radius: 5px;
-  box-shadow: 2px 3px 2px  #2e2e2f7b;
+  box-shadow: 2px 3px 2px #2e2e2f7b;
   /* transition: 0.001s; */
-
 }
 
-.player1{
+.player1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -83,7 +79,7 @@ background-size: contain;  background-color: rgb(180, 198, 213);
   overflow: hidden;
   background-repeat: no-repeat;
 }
-.player2{
+.player2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -96,4 +92,10 @@ background-size: contain;  background-color: rgb(180, 198, 213);
   transition: 0.1s;
   overflow: hidden;
   background-repeat: no-repeat;
+}
+
+.damage {
+  position: absolute;
+  color: red;
+  transition: 0.2s;
 }

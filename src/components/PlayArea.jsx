@@ -20,12 +20,19 @@ const PlayArea = function () {
       backgroundColor: "#888888",
     },
   };
+
   const cardsAnimation = {
     initial: { x: -100, opacity: 0 },
     animate: { x: 0, opacity: 1 },
     exit: { y: -100, opacity: 0 },
   };
+  const damageAnimation = {
+    initial: { x: 0, opacity: 0 },
+    animate: { x: 100, y: -50, opacity: 1, scale: 0.4 },
+    exit: { y: -100, opacity: 0 },
+  };
 
+  /////////////FUNCTION RETURN//////////////////////////
   return (
     <div className="play_area">
       {players.map((player, index) => {
@@ -44,7 +51,20 @@ const PlayArea = function () {
                     : `url(${player.avatar})`,
               }}
             >
-              <div className="health">{player.health}</div>
+              <div className="health">
+                {player.health}
+                {damage === player.playerId && (
+                  <motion.div
+                    className="damage"
+                    key={damage}
+                    variants={damageAnimation}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    {currentHandTotal}
+                  </motion.div>
+                )}
+              </div>
               <div className="cardsArea">
                 <div className="handCards">
                   {turn === player.playerId &&
@@ -62,19 +82,21 @@ const PlayArea = function () {
                       );
                     })}
                   <div>
-
                     {turn === player.playerId && (
                       <motion.div
                         className="attack"
-                        whileHover={{scale: 1.2}}
-                        whileTap={{scale: 0.9}}
-                        onClick={ () => currentHandTotal > 0 &&
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() =>
+                          currentHandTotal > 0 &&
                           attack(
                             player.playerId === 2 ? 1 : 2,
                             currentHandTotal
                           )
                         }
-                      >{currentHandTotal}</motion.div>
+                      >
+                        {currentHandTotal}
+                      </motion.div>
                     )}
                   </div>
                 </div>
@@ -97,7 +119,20 @@ const PlayArea = function () {
                     : `url(${player.avatar})`,
               }}
             >
-              <div className="health">{player.health}</div>
+              <div className="health">
+                {player.health}
+                {damage === player.playerId && (
+                  <motion.div
+                    className="damage"
+                    key={damage}
+                    variants={damageAnimation}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    {currentHandTotal}
+                  </motion.div>
+                )}
+              </div>
               <div className="handCards"></div>
             </motion.div>
           );
