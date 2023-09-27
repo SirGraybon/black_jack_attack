@@ -1,10 +1,15 @@
+import "../styles/navBar.css";
 
+import shareState from "../state/StateContext";
 
+const NavBar = function () {
+  const { resetGame } = shareState();
 
-const NavBar = function(){
-  return(
-<div></div>
-  )
-}
+  return (
+    <div className="navBarComponent">
+      <button onClick={() => resetGame()}></button>
+    </div>
+  );
+};
 
-export default NavBar
+export default NavBar;

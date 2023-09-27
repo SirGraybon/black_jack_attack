@@ -3,7 +3,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 1100px;
-  height: 750px;
+  height: 550px;
 }
 
 .attack {
@@ -43,7 +43,7 @@
   height: 150px;
   align-items: center;
 
-  background-color: rgb(136, 133, 131);
+  background-color: rgb(204, 154, 120);
 }
 .cardsArea {
   display: flex;
@@ -58,11 +58,12 @@
   position: relative;
   width: 75px;
   height: 105px;
+  min-width: 75px;
+  min-height: 105px;
   background-size: contain;
   background-color: rgb(180, 198, 213);
   border-radius: 5px;
   box-shadow: 2px 3px 2px #2e2e2f7b;
-  /* transition: 0.001s; */
 }
 
 .player1 {
@@ -72,9 +73,9 @@
   align-items: flex-end;
   text-align: center;
   width: 500px;
-  height: 700px;
+  height: 500px;
   /* background-color: rgb(191, 191, 191); */
-  border-radius: 20px;
+  border-radius: 30px;
   transition: 0.1s;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -86,7 +87,7 @@
   align-items: flex-start;
   text-align: center;
   width: 500px;
-  height: 700px;
+  height: 500px;
   /* background-color: rgb(197, 63, 63); */
   border-radius: 20px;
   transition: 0.1s;

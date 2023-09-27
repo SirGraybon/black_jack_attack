@@ -4,11 +4,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import cardBack from "../assets/cards/cardback.png"
 
 export const Dealer = function () {
-  const { drawCard, deck, burnPile, topCard } = shareState();
+  const { drawCard, deck, burnPile, topCard, turn } = shareState();
   /////////////ANIMATIONs/////////////////
   const animation = {
-    initial: { x: -100, opacity: 0 },
-    animate: { x: 0, opacity: 1 },
+    initial: { x: 0, opacity: 1 },
+    animate: turn === 1 ? { y: -150,  opacity: 0 }: { x: 350, y: -70,  opacity: 0 } ,
     exit: { x: 100, opacity: 0 },
   };
   /////////////component return/////////////////

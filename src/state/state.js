@@ -19,8 +19,22 @@ import Queen from "../assets/cards/Queen.png";
 import QueenDamage from "../assets/cards/QueenDamage.png";
 
 const players = [
-  { playerId: 1, hand: 0, health: 175, avatar: Queen, hurt: QueenDamage },
-  { playerId: 2, hand: 0, health: 175, avatar: king, hurt: kingDamage },
+  {
+    playerId: 1,
+    hand: 0,
+    health: 175,
+    wins: 0,
+    avatar: Queen,
+    hurt: QueenDamage,
+  },
+  {
+    playerId: 2,
+    hand: 0,
+    health: 175,
+    wins: 0,
+    avatar: king,
+    hurt: kingDamage,
+  },
 ];
 ////
 const cards = [
@@ -78,7 +92,16 @@ const cards = [
   { value: 13, image: KHeart, id: 52 },
 ];
 
-export const defaultState = {
+export const initialState = {
+  turn: 1,
+  damage: 0,
+  players: players,
+  deck: cards,
+  currentHand: [],
+  currentHandTotal: 0,
+  burnPile: [],
+};
+const defaultState = {
   turn: 1,
   damage: 0,
   players: players,
@@ -97,34 +120,25 @@ export const reducer = function (state, action) {
         damage: action.payload,
       };
     }
-  }
-  switch (action.type) {
-    case "TAKE_DAMAGE": {
-      const updatedPlayers = [...state.players];
-      const playerIndex = updatedPlayers.findIndex(
-        (player) => action.id === player.playerId
-      );
-      const newHealth = (updatedPlayers[playerIndex].health -= action.damage);
-      updatedPlayers[playerIndex].health = newHealth;
 
+    case "TAKE_DAMAGE": {
       return {
         ...state,
-        players: updatedPlayers,
+        players: action.updatedPlayers,
       };
     }
-  }
-  switch (action.type) {
+
     case "HIT_ME": {
+      console.log(action.newTotal);
       return {
         ...state,
         deck: action.updatedDeck,
         currentHand: action.newHand,
         currentHandTotal: action.newTotal,
-        topCard: action.drawnCard,
+        // topCard: action.drawnCard,
       };
     }
-  }
-  switch (action.type) {
+
     case "NEXT_TURN": {
       console.log("turn: " + state.turn);
       const newTurn = state.turn === 1 ? 2 : 1;
@@ -134,6 +148,18 @@ export const reducer = function (state, action) {
         turn: newTurn,
         currentHand: [],
         currentHandTotal: 0,
+      };
+    }
+    case "RESET": {
+      return {
+        ...state,
+        turn: 1,
+        damage: 0,
+        players: players,
+        deck: cards,
+        currentHand: [],
+        currentHandTotal: 0,
+        burnPile: [],
       };
     }
   }
