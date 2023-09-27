@@ -140,14 +140,20 @@ export const reducer = function (state, action) {
     }
 
     case "NEXT_TURN": {
-      console.log("turn: " + state.turn);
+      const prevBurnPile = [...state.burnPile]
+      const prevHand = [...state.currentHand]
+      prevHand.forEach((card) => {
+        prevBurnPile.push(card)
+      })
+
       const newTurn = state.turn === 1 ? 2 : 1;
-      console.log("newTurn: " + newTurn);
+
       return {
         ...state,
         turn: newTurn,
         currentHand: [],
         currentHandTotal: 0,
+        burnPile: prevBurnPile
       };
     }
     case "RESET": {

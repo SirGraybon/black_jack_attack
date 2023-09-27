@@ -7,7 +7,7 @@ const NavBar = function () {
 
   return (
     <div className="navBarComponent">
-      <button onClick={() => resetGame()}></button>
+      <div className="reset" onClick={() => resetGame()}> ↻</div>
     </div>
   );
 };

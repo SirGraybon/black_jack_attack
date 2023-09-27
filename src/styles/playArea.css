@@ -100,3 +100,13 @@
   color: red;
   transition: 0.2s;
 }
+
+.dot {
+  background-color: aqua;
+
+  top: 500;
+  right: 500;
+  height: 20px;
+  width: 100%;
+
+}

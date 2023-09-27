@@ -55,11 +55,11 @@ const PlayArea = function () {
                 {player.health}
                 {damage === player.playerId && (
                   <motion.div
-                    className="damage"
-                    key={damage}
-                    variants={damageAnimation}
-                    initial="initial"
-                    animate="animate"
+                  className="damage"
+                  key={damage}
+                  variants={damageAnimation}
+                  initial="initial"
+                  animate="animate"
                   >
                     {currentHandTotal}
                   </motion.div>
@@ -71,30 +71,30 @@ const PlayArea = function () {
                     inPlayHand.map((card) => {
                       return (
                         <motion.div
-                          className="card"
-                          key={card.id}
-                          variants={cardsAnimation}
-                          initial="initial"
-                          animate="animate"
-                          exit="exit"
-                          style={{ backgroundImage: `url(${card.image})` }}
+                        className="card"
+                        key={card.id}
+                        variants={cardsAnimation}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        style={{ backgroundImage: `url(${card.image})` }}
                         ></motion.div>
-                      );
-                    })}
+                        );
+                      })}
                   <div>
                     {turn === player.playerId && (
                       <motion.div
-                        className="attack"
-                        whileHover={{ scale: 1.2 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() =>
-                          currentHandTotal > 0 &&
-                          attack(
-                            player.playerId === 2 ? 1 : 2,
-                            currentHandTotal
+                      className="attack"
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() =>
+                        currentHandTotal > 0 &&
+                        attack(
+                          player.playerId === 2 ? 1 : 2,
+                          currentHandTotal
                           )
                         }
-                      >
+                        >
                         {currentHandTotal}
                       </motion.div>
                     )}
@@ -102,6 +102,7 @@ const PlayArea = function () {
                 </div>
                 <div className="handCards"></div>
               </div>
+
             </motion.div>
           );
         } else {
