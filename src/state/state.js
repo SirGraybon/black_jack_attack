@@ -101,6 +101,7 @@ export const initialState = {
   currentHand: [],
   currentHandTotal: 0,
   burnPile: [],
+  gameOverModal: true
 };
 
 ////////////////////REDUCER SWITCH CASEs////////////////////////////////////////////////////////////
@@ -138,6 +139,7 @@ export const reducer = function (state, action) {
       prevHand.forEach((card) => {
         prevBurnPile.push(card)
       })
+      const gameOver = state.players[0].health < 1 || state.players[1].health < 1
 
       const newTurn = state.turn === 1 ? 2 : 1;
 
@@ -146,12 +148,23 @@ export const reducer = function (state, action) {
         turn: newTurn,
         currentHand: [],
         currentHandTotal: 0,
-        burnPile: prevBurnPile
+        burnPile: prevBurnPile,
+        gameOverModal: gameOver
       };
     }
     case "RESET": {
       return {
         ...initialState
+      };
+    }
+    case "TOGGLE_MODAL": {
+      console.log("howdy")
+      const currentState = {...state}
+      const toggle = currentState.gameOverModal === true ? false : true
+
+      return {
+        ...state,
+        gameOverModal: toggle
       };
     }
   }

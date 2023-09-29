@@ -1,0 +1,19 @@
+.modal {
+  position: fixed;
+  width: 600px;
+  height: 400px;
+  background-color: blue;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px #75757ae5;
+}
+
+.backDrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(70, 70, 63, 0.387);
+  cursor: pointer;
+}
