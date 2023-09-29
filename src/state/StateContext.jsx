@@ -32,8 +32,8 @@ export const StateProvider = ({ children }) => {
   const drawCard = function () {
   
     const deckIndex = Math.floor(Math.random() * state.deck.length);
-    const updatedDeck = state.deck;
-    const newHand = state.currentHand;
+    const updatedDeck = [...state.deck];
+    const newHand = [...state.currentHand];
     const oldTotal = state.currentHandTotal;
     const drawnCard = updatedDeck[deckIndex];
     const cardValue = drawnCard.value;

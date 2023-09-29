@@ -18,7 +18,7 @@ import kingDamage from "../assets/cards/KingDamage.png";
 import Queen from "../assets/cards/Queen.png";
 import QueenDamage from "../assets/cards/QueenDamage.png";
 
-const players = [
+const playerList = [
   {
     playerId: 1,
     hand: 0,
@@ -92,27 +92,20 @@ const cards = [
   { value: 13, image: KHeart, id: 52 },
 ];
 
+
 export const initialState = {
   turn: 1,
   damage: 0,
-  players: players,
-  deck: cards,
+  players: JSON.parse(JSON.stringify(playerList)),
+  deck: [...cards],
   currentHand: [],
   currentHandTotal: 0,
   burnPile: [],
 };
-const defaultState = {
-  turn: 1,
-  damage: 0,
-  players: players,
-  deck: cards,
-  topCard: { value: 1, image: AHeart },
-  currentHand: [],
-  currentHandTotal: 0,
-  burnPile: [],
-};
+
 ////////////////////REDUCER SWITCH CASEs////////////////////////////////////////////////////////////
 export const reducer = function (state, action) {
+  console.log(playerList)
   switch (action.type) {
     case "ANIMATE_DAMAGE": {
       return {
@@ -158,14 +151,7 @@ export const reducer = function (state, action) {
     }
     case "RESET": {
       return {
-        ...state,
-        turn: 1,
-        damage: 0,
-        players: players,
-        deck: cards,
-        currentHand: [],
-        currentHandTotal: 0,
-        burnPile: [],
+        ...initialState
       };
     }
   }

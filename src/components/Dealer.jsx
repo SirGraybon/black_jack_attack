@@ -19,6 +19,7 @@ export const Dealer = function () {
     <AnimatePresence mode="wait">
       <div className="dealerComponent">
         <div className="deck"  onClick= { () => deck.length > 0 && drawCard()}>
+        {deck.length}
           <div
             className="card"
             style={{
@@ -39,6 +40,7 @@ export const Dealer = function () {
               position: "absolute",
               x: "+202",
             }}
+            
           ></motion.div>
         </div>
 
