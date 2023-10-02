@@ -1,9 +1,18 @@
 #root {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
+  background-color: #D2EAAE;
+  width: auto;
+  height: 100vh;
   /* max-width: 1280px; */
   /* margin: 0 auto; */
   /* padding: 2rem; */
   /* text-align: center; */
 }
 
+body,html {
+  color: #0A0D29;
+  margin: 0;
+  padding: 0;
+}

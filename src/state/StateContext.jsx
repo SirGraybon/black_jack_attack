@@ -17,13 +17,17 @@ export const StateProvider = ({ children }) => {
       } else {
         updatedPlayers[playerIndex].health -= damage;
       }
+
+      if (updatedPlayers[playerIndex].health < 0) {
+        updatedPlayers[playerIndex].health = 0
+      }
       
       dispatch({ type: "TAKE_DAMAGE", updatedPlayers });
       dispatch({ type: "ANIMATE_DAMAGE", payload: id });
       
       setTimeout(() => {
         dispatch({ type: "ANIMATE_DAMAGE", payload: 0 });
-      }, 300);
+      }, 400);
       
       setTimeout(() => {
         dispatch({ type: "NEXT_TURN" });

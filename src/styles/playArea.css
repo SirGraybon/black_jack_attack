@@ -1,9 +1,9 @@
 .play_area {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 1100px;
-  height: 550px;
+  height: 700px;
 }
 
 .attack {
@@ -14,11 +14,13 @@
   height: 75px;
   border-radius: 50px;
   background-color: rgb(93, 162, 222);
+  background-color: #d2eaae;
   font-size: 24pt;
   font-weight: bold;
   margin: 10px;
   cursor: pointer;
   box-shadow: 2px 3px 3px #2e2e2f9e;
+  color: #4b5013;
 }
 
 .health {
@@ -29,7 +31,7 @@
   height: 100px;
   width: 100px;
   font-weight: bold;
-  color: rgb(36, 48, 48);
+  color: #4b5013;
   margin: 65px;
   margin-top: 75px;
   /* background-color: blue; */
@@ -43,14 +45,13 @@
   height: 150px;
   align-items: center;
 
-  background-color: rgb(204, 154, 120);
+  background-color: #7e7420;
+  /* margin-bottom: 10px; */
 }
 .cardsArea {
   display: flex;
   width: 100%;
   align-items: center;
-
-  background-color: rgb(175, 92, 40);
 }
 
 .card {
@@ -73,12 +74,16 @@
   align-items: flex-end;
   text-align: center;
   width: 500px;
-  height: 500px;
+  height: 600px;
   /* background-color: rgb(191, 191, 191); */
   border-radius: 30px;
   transition: 0.1s;
   overflow: hidden;
   background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255);
+  border-color: navy;
+  border: thin;
+  box-shadow: 3px 3px 3px #2e2e2f1b;
 }
 .player2 {
   display: flex;
@@ -87,27 +92,39 @@
   align-items: flex-start;
   text-align: center;
   width: 500px;
-  height: 500px;
-  /* background-color: rgb(197, 63, 63); */
-  border-radius: 20px;
+  height: 600px;
+  /* background-color: rgb(191, 191, 191); */
+  border-radius: 30px;
   transition: 0.1s;
   overflow: hidden;
   background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255);
+  border-color: navy;
+  border: thin;
+  box-shadow: 3px 3px 3px #2e2e2f1b;
 }
 
+.playerBottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .damage {
   position: absolute;
   color: red;
   transition: 0.2s;
 }
 
+.victoryCounter {
+  height: 70px;
+  width: 100%;
+}
+
 .dot {
-  background-color: aqua;
+  background-color: #d2eaae;
 
   top: 500;
   right: 500;
   height: 20px;
   width: 100%;
-
 }
-

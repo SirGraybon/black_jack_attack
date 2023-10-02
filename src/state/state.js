@@ -101,7 +101,18 @@ export const initialState = {
   currentHand: [],
   currentHandTotal: 0,
   burnPile: [],
-  gameOverModal: true
+  gameOverModal: false
+};
+
+const defaultState = {
+  turn: 1,
+  damage: 0,
+  players: JSON.parse(JSON.stringify(playerList)),
+  deck: [...cards],
+  currentHand: [],
+  currentHandTotal: 0,
+  burnPile: [],
+  gameOverModal: false
 };
 
 ////////////////////REDUCER SWITCH CASEs////////////////////////////////////////////////////////////
@@ -153,9 +164,9 @@ export const reducer = function (state, action) {
       };
     }
     case "RESET": {
-      return {
-        ...initialState
-      };
+      const newGame = {...defaultState}
+      return newGame
+      ;
     }
     case "TOGGLE_MODAL": {
       console.log("howdy")

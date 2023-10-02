@@ -7,8 +7,16 @@ import Modal from "./Modal";
 
 const PlayArea = function () {
   ///////////////STATE//////////////////////////////
-  const { turn, damage, attack, players, currentHand, currentHandTotal, deck, gameOverModal } =
-    shareState();
+  const {
+    turn,
+    damage,
+    attack,
+    players,
+    currentHand,
+    currentHandTotal,
+    deck,
+    gameOverModal,
+  } = shareState();
   // const [turn, setTurn] = useState(1);
   // const [damage, setDamage] = useState(false)
   //////////////VARIABLEs//////////////////////////
@@ -67,42 +75,44 @@ const PlayArea = function () {
                   </motion.div>
                 )}
               </div>
-              <div className="cardsArea">
-                <div className="handCards">
-                  {turn === player.playerId &&
-                    inPlayHand.map((card) => {
-                      return (
+              <div className="playerBottom">
+                <div className="cardsArea">
+                  <div className="handCards">
+                    {turn === player.playerId &&
+                      inPlayHand.map((card) => {
+                        return (
+                          <motion.div
+                            className="card"
+                            key={card.id}
+                            variants={cardsAnimation}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            style={{ backgroundImage: `url(${card.image})` }}
+                          ></motion.div>
+                        );
+                      })}
+                    <div>
+                      {turn === player.playerId && (
                         <motion.div
-                          className="card"
-                          key={card.id}
-                          variants={cardsAnimation}
-                          initial="initial"
-                          animate="animate"
-                          exit="exit"
-                          style={{ backgroundImage: `url(${card.image})` }}
-                        ></motion.div>
-                      );
-                    })}
-                  <div>
-                    {turn === player.playerId && (
-                      <motion.div
-                        className="attack"
-                        whileHover={{ scale: 1.2 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() =>
-                          currentHandTotal > 0 &&
-                          attack(
-                            player.playerId === 2 ? 1 : 2,
-                            currentHandTotal
-                          )
-                        }
-                      >
-                        {currentHandTotal}
-                      </motion.div>
-                    )}
+                          className="attack"
+                          whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() =>
+                            currentHandTotal > 0 &&
+                            attack(
+                              player.playerId === 2 ? 1 : 2,
+                              currentHandTotal
+                            )
+                          }
+                        >
+                          {currentHandTotal}
+                        </motion.div>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="handCards"></div>
+                <div className="victoryCounter"></div>
               </div>
             </motion.div>
           );
@@ -135,7 +145,12 @@ const PlayArea = function () {
                   </motion.div>
                 )}
               </div>
-              <div className="handCards"></div>
+              <div className="playerBottom">
+                <div className="cardsArea">
+                  <div className="handCards"></div>
+                </div>
+                <div className="victoryCounter"></div>
+              </div>
             </motion.div>
           );
         }
