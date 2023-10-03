@@ -1,23 +1,28 @@
 .navBarComponent {
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 75px;
   background-color: #A25A2A;
   background-color: #7e7420;
-  border-radius: 100px;
+  border-radius: 20px;
   box-shadow: 3px 3px 3px #2e2e2f1b;
   margin-top: 20px;
 }
 
 .reset {
+  margin-left: 20px;
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: beige;
   height: 30px;
-  width: 30px;
-  border-radius: 50px;
+  width: fit-content;
+  border-radius: 10px;
   box-shadow: 2px 3px 3px #2e2e2f9e;
-  font-size: 20pt;
+  font-size: 15pt;
   cursor: pointer;
+  font-family: sans-serif;
 
 }

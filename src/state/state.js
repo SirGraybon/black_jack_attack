@@ -92,7 +92,6 @@ const cards = [
   { value: 13, image: KHeart, id: 52 },
 ];
 
-
 export const initialState = {
   turn: 1,
   damage: 0,
@@ -101,7 +100,7 @@ export const initialState = {
   currentHand: [],
   currentHandTotal: 0,
   burnPile: [],
-  gameOverModal: false
+  gameOverModal: false,
 };
 
 const defaultState = {
@@ -112,12 +111,12 @@ const defaultState = {
   currentHand: [],
   currentHandTotal: 0,
   burnPile: [],
-  gameOverModal: false
+  gameOverModal: false,
 };
 
 ////////////////////REDUCER SWITCH CASEs////////////////////////////////////////////////////////////
 export const reducer = function (state, action) {
-  console.log(playerList)
+  console.log(playerList);
   switch (action.type) {
     case "ANIMATE_DAMAGE": {
       return {
@@ -145,12 +144,13 @@ export const reducer = function (state, action) {
     }
 
     case "NEXT_TURN": {
-      const prevBurnPile = [...state.burnPile]
-      const prevHand = [...state.currentHand]
+      const prevBurnPile = [...state.burnPile];
+      const prevHand = [...state.currentHand];
       prevHand.forEach((card) => {
-        prevBurnPile.push(card)
-      })
-      const gameOver = state.players[0].health < 1 || state.players[1].health < 1
+        prevBurnPile.push(card);
+      });
+      const gameOver =
+        state.players[0].health < 1 || state.players[1].health < 1;
 
       const newTurn = state.turn === 1 ? 2 : 1;
 
@@ -160,22 +160,29 @@ export const reducer = function (state, action) {
         currentHand: [],
         currentHandTotal: 0,
         burnPile: prevBurnPile,
-        gameOverModal: gameOver
+        gameOverModal: gameOver,
       };
     }
     case "RESET": {
-      const newGame = {...defaultState}
-      return newGame
-      ;
+      return {
+        turn: 1,
+        damage: 0,
+        players: JSON.parse(JSON.stringify(playerList)),
+        deck: [...cards],
+        currentHand: [],
+        currentHandTotal: 0,
+        burnPile: [],
+        gameOverModal: false,
+      };
     }
     case "TOGGLE_MODAL": {
-      console.log("howdy")
-      const currentState = {...state}
-      const toggle = currentState.gameOverModal === true ? false : true
+      console.log("howdy");
+      const currentState = { ...state };
+      const toggle = currentState.gameOverModal === true ? false : true;
 
       return {
         ...state,
-        gameOverModal: toggle
+        gameOverModal: toggle,
       };
     }
   }

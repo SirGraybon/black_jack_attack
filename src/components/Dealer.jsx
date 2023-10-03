@@ -52,6 +52,8 @@ export const Dealer = function () {
             burnPile.map((card) => {
               const modifier = card.id % 2 === 0 ? 0 : card.value * 6
               const angle = (card.value * 3) - modifier
+              const x = card.id % 5 === 0 ? 8 : 0
+              const y = card.id % 6 === 0 ? 8 : 0
               
               return (
                 <motion.div
@@ -62,6 +64,8 @@ export const Dealer = function () {
                   backgroundImage: `url(${cardBack})`,
                   zIndex: 2,
                   position: "absolute",
+                  x: x,
+                  y: y
                   // x: "+202",
                 }}
                 ></motion.div>
