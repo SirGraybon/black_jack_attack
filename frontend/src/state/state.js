@@ -93,6 +93,7 @@ const cards = [
 ];
 
 export const initialState = {
+  gameOn: false,
   turn: 1,
   damage: 0,
   players: JSON.parse(JSON.stringify(playerList)),
@@ -116,8 +117,14 @@ const defaultState = {
 
 ////////////////////REDUCER SWITCH CASEs////////////////////////////////////////////////////////////
 export const reducer = function (state, action) {
-  console.log(playerList);
+
   switch (action.type) {
+    case "START_GAME": {
+      return {
+        ...state,
+        gameOn: true,
+      };
+    }
     case "ANIMATE_DAMAGE": {
       return {
         ...state,

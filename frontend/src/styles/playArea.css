@@ -112,8 +112,11 @@
   width: 100%;
 }
 .damage {
+  height: auto;
+  width: auto;
   position: absolute;
   color: red;
+  font-size: 30pt;
   transition: 0.2s;
 }
 

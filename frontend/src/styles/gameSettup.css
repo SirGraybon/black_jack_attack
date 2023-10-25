@@ -1,0 +1,8 @@
+.gameSettupContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1100px;
+  height: 700px;
+  background-color: black;
+}

@@ -38,7 +38,6 @@ export const Dealer = function () {
             exit="exit"
             style={{
               backgroundImage: `url(${cardBack})`,
-              zIndex: 2,
               position: "absolute",
               x: "+202",
             }}
@@ -62,7 +61,6 @@ export const Dealer = function () {
                 style={{
                   rotate: angle,
                   backgroundImage: `url(${cardBack})`,
-                  zIndex: 2,
                   position: "absolute",
                   x: x,
                   y: y

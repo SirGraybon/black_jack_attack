@@ -44,7 +44,7 @@ const PlayArea = function () {
   /////////////FUNCTION RETURN//////////////////////////
   return (
     <div className="play_area">
-      {gameOverModal && <Modal />}
+      
       {players.map((player, index) => {
         if (turn === player.playerId) {
           return (
@@ -71,7 +71,7 @@ const PlayArea = function () {
                     initial="initial"
                     animate="animate"
                   >
-                    {currentHandTotal}
+                    {currentHandTotal === 21 ? "50" : currentHandTotal}
                   </motion.div>
                 )}
               </div>
