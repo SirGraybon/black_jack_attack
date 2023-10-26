@@ -4,16 +4,20 @@ import { Dealer } from "./components/Dealer";
 import shareState, { StateProvider } from "./state/StateContext";
 import NavBar from "./components/Navbar";
 import Modal from "./components/Modal";
-import io from "socket.io-client";
+import io, { connect } from "socket.io-client";
 import GameSettup from "./components/GameSettup";
+import { useEffect } from "react";
 
-const socket = io.connect("http://localhost:8080");
+useEffect(() => {
+  socket = io.connect("http://localhost:8080");
+}, []);
+
+// socket.on("connect", ()=> {
+//   console.log("Connected")
+// })
 
 function App() {
-  const handleClick = () => {
-    socket.emmit();
-  };
-
+  console.log("running?");
   const { gameOverModal, gameOn } = shareState();
   return (
     <StateProvider>
