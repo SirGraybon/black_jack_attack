@@ -4,31 +4,30 @@ import { Dealer } from "./components/Dealer";
 import shareState, { StateProvider } from "./state/StateContext";
 import NavBar from "./components/Navbar";
 import Modal from "./components/Modal";
-import io, { connect } from "socket.io-client";
+import io from "socket.io-client";
 import GameSettup from "./components/GameSettup";
-import { useEffect } from "react";
+
 const socket = io("http://localhost:8080");
 
 function App() {
-  const { gameOverModal, gameOn, players } = shareState();
+  const { gameOverModal, gameOn, players, users } = shareState();
 
-  const handleClick = ()=> {
-    socket.emit("send_message", {message: "this is a test"})
-  }
-// useEffect(() => {
-// }, [players]);
+  let userID = "placeholder"
 
-// socket.on("connect", ()=> {
-//   console.log("Connected")
-// })
+  socket.on("connect", () => {
+    console.log("Connected");
+    console.log(`connected as user ${socket.id}`);
+    userID = socket.id
+  });
+  console.log(socket.id)
 
-  console.log("running?");
   return (
     <StateProvider>
-      <button onClick={()=> handleClick()}/>
       <div className="container">
+        <button onClick={() => handleClick()} />
+        <div>{users}</div>
         {gameOverModal && <Modal />}
-        <NavBar />
+        <NavBar id={userID} />
         {gameOn && <GameSettup />}
         <PlayArea />
         <Dealer />

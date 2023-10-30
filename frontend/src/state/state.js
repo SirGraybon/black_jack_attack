@@ -18,6 +18,11 @@ import kingDamage from "../assets/cards/KingDamage.png";
 import Queen from "../assets/cards/Queen.png";
 import QueenDamage from "../assets/cards/QueenDamage.png";
 
+
+
+
+
+
 const playerList = [
   {
     playerId: 1,
@@ -93,6 +98,7 @@ const cards = [
 ];
 
 export const initialState = {
+  users: [],
   gameOn: false,
   turn: 1,
   damage: 0,
@@ -190,6 +196,18 @@ export const reducer = function (state, action) {
       return {
         ...state,
         gameOverModal: toggle,
+      };
+    }
+    case "ADD_USER": {
+      const currentUsers = [...state.users]
+      if(currentUsers.length < 2){
+
+        currentUsers.push(action.payload)
+      }
+  
+      return {
+        ...state,
+        users: currentUsers,
       };
     }
   }

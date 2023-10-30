@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "../styles/playArea.css";
 import { motion } from "framer-motion";
 import shareState from "../state/StateContext";
-import Card from "./Card.jsx";
-import Modal from "./Modal";
+
 
 const PlayArea = function () {
+  
   ///////////////STATE//////////////////////////////
   const {
     turn,
@@ -16,11 +16,15 @@ const PlayArea = function () {
     currentHandTotal,
     deck,
     gameOverModal,
+    addUserID
   } = shareState();
-  // const [turn, setTurn] = useState(1);
-  // const [damage, setDamage] = useState(false)
+  
   //////////////VARIABLEs//////////////////////////
   const inPlayHand = [...currentHand];
+ 
+  
+  //////////////HELPER_FUNCTIONs//////////////////////////
+
   /////////////ANIMATIONs//////////////////////////
   const animation = {
     initial: {},

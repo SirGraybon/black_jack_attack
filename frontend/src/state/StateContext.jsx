@@ -70,6 +70,9 @@ export const StateProvider = ({ children }) => {
   const toggleModal = function () {
     dispatch({ type: "TOGGLE_MODAL" });
   };
+  const addUserID = function (userID) {
+    dispatch({ type: "ADD_USER", payload: userID });
+  };
 
   ////////////////////EXPORT FOR FUNCTIONs & STATE////////////////////////////////////////////////////////////
   const value = {
@@ -78,6 +81,7 @@ export const StateProvider = ({ children }) => {
     resetGame,
     toggleModal,
     startGame,
+    addUserID,
     damage: state.damage,
     turn: state.turn,
     players: state.players,
@@ -87,6 +91,7 @@ export const StateProvider = ({ children }) => {
     currentHandTotal: state.currentHandTotal,
     topCard: state.topCard,
     gameOverModal: state.gameOverModal,
+    users: state.users
   };
 
   return (

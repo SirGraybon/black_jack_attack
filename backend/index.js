@@ -18,10 +18,8 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-  // console.log(`user connected: ${socket.id}`);
-  // users.push(socket.id);
-  // console.log("users: " + users);
-  // io.emit(users)
+  console.log(`user connected: ${socket.id}`);
+
 socket.on("send_message", (data)=> {
   console.log(data.message)
 })
