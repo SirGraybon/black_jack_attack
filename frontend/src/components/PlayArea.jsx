@@ -14,6 +14,7 @@ const PlayArea = function () {
     players,
     currentHand,
     currentHandTotal,
+    state,
     deck,
     gameOverModal,
     addUserID
@@ -24,7 +25,7 @@ const PlayArea = function () {
  
   
   //////////////HELPER_FUNCTIONs//////////////////////////
-
+console.log(state)
   /////////////ANIMATIONs//////////////////////////
   const animation = {
     initial: {},

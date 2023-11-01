@@ -125,10 +125,6 @@ const defaultState = {
 export const reducer = function (state, action) {
 
   switch (action.type) {
-    case "UPDATE_ALL": {
-      const newState = {...action.updatedState}
-      return newState
-    }
     case "START_GAME": {
       return {
         ...state,

@@ -5,10 +5,7 @@ import shareState from "../state/StateContext";
 const NavBar = function (id) {
   const { resetGame, users, addUserID } = shareState();
 
-  const handleClick = () => {
-    addUserID(id.id);
-    console.log(users);
-  };
+
 
   return (
     <div className="navBarComponent">
@@ -16,10 +13,7 @@ const NavBar = function (id) {
         {" "}
         New Game ↻
       </div>
-      <div className="reset" onClick={() => handleClick()}>
-        {" "}
-        New Game ↻
-      </div>
+      
     </div>
   );
 };

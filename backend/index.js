@@ -22,6 +22,11 @@ io.on("connection", (socket) => {
 
 socket.on("send_message", (data)=> {
   console.log(data.message)
+
+})
+
+socket.on("updateServerState", (updatedState) => {
+  socket.emit("updateClientState", updatedState)
 })
 
 });

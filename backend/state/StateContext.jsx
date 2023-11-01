@@ -1,27 +1,9 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import reducer, { initialState } from "./state";
-import io from "socket.io-client";
-
 ////////////////////useContext////////////////////////////////////////////////////////////
 const StateContext = createContext(initialState);
 export const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  ////////////////////CONNECTION_TO_BACKEND////////////////////////////////////////////////////////////
-  const socket = io("http://localhost:8080");
-
-  socket.on("connect", () => {
-    console.log(`connected as user ${socket.id}`);
-    
-  });
-
-  socket.on("updateClientState", (updatedState)=> {
-    dispatch({type:"UPDATE_ALL", updatedState})
-  })
-
-  useEffect(() => {
-    socket.emit("updateServerState",state)
-  }, [state])
 
   ////////////////////PLAYER FUNCTIONs////////////////////////////////////////////////////////////
   const attack = function (id, damage) {
@@ -109,8 +91,7 @@ export const StateProvider = ({ children }) => {
     currentHandTotal: state.currentHandTotal,
     topCard: state.topCard,
     gameOverModal: state.gameOverModal,
-    users: state.users,
-    state: state,
+    users: state.users
   };
 
   return (

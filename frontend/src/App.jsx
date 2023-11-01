@@ -4,22 +4,18 @@ import { Dealer } from "./components/Dealer";
 import shareState, { StateProvider } from "./state/StateContext";
 import NavBar from "./components/Navbar";
 import Modal from "./components/Modal";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 import GameSettup from "./components/GameSettup";
 
-const socket = io("http://localhost:8080");
+// const socket = io("http://localhost:8080");
 
 function App() {
-  const { gameOverModal, gameOn, players, users } = shareState();
+  const { gameOverModal, gameOn, users } = shareState();
 
-  let userID = "placeholder"
-
-  socket.on("connect", () => {
-    console.log("Connected");
-    console.log(`connected as user ${socket.id}`);
-    userID = socket.id
-  });
-  console.log(socket.id)
+  // socket.on("connect", () => {
+  //   console.log(`connected as user ${socket.id}`);
+  //   userID = socket.id;
+  // });
 
   return (
     <StateProvider>
@@ -27,7 +23,7 @@ function App() {
         <button onClick={() => handleClick()} />
         <div>{users}</div>
         {gameOverModal && <Modal />}
-        <NavBar id={userID} />
+        <NavBar />
         {gameOn && <GameSettup />}
         <PlayArea />
         <Dealer />
